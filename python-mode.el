@@ -202,6 +202,10 @@ Results arrive in output buffer, which is not in comint-mode"
           (group (1+ (not (any "\"<")))) ; avoid `<stdin>' &c
           "\", line " (group (1+ digit)))
      1 2)
+    (,(rx line-start "File " ; For IPython shell
+          (group (1+ (not (any "\"<")))) ; avoid `<stdin>' &c
+          ":" (group (1+ digit)))
+     1 2)
     (,(rx " in file " (group (1+ not-newline)) " on line "
           (group (1+ digit)))
      1 2)
